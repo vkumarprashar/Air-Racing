@@ -77,9 +77,7 @@ public class MainActivity extends AppCompatActivity {
         checkLogin();
     }
 
-    public NavigationView getNavigationView() {
-        return navigationView;
-    }
+   //Deleting prefrences
     private void logout() {
         SharedPreferences sharedPreferences = getSharedPreferences("LoginDetails", MODE_PRIVATE);
         SharedPreferences.Editor editor = sharedPreferences.edit();
@@ -100,6 +98,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
 
+    //Chhecking whether logged in or logged out
     public void checkLogin() {
         SharedPreferences sharedPreferences = getSharedPreferences("LoginDetails", MODE_PRIVATE);
         String phoneNumber = sharedPreferences.getString("phoneNumber", null);
@@ -129,6 +128,7 @@ public class MainActivity extends AppCompatActivity {
         callFragment(new HomeFragment());
     }
 
+    //Calling different fragments
     private void callFragment(Fragment fragment) {
         FragmentManager fm = getSupportFragmentManager();
         FragmentTransaction ft = fm.beginTransaction();

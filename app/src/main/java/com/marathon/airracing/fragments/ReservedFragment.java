@@ -52,6 +52,7 @@ public class ReservedFragment extends Fragment {
         return view;
     }
 
+    //Saving screesnhot of the ticket
 //    private void createUri(View view) {
 //        view.setDrawingCacheEnabled(true);
 //        Bitmap bitmap = Bitmap.createBitmap(view.getDrawingCache());

@@ -43,6 +43,7 @@ public class DBHelper extends SQLiteOpenHelper {
         return DATABASE_NAME;
     }
 
+    //Method to insert DB records
     public boolean insertRecord(RaceModel raceModel) {
         SQLiteDatabase database = this.getWritableDatabase();
         ContentValues contentValues = new ContentValues();
@@ -62,6 +63,7 @@ public class DBHelper extends SQLiteOpenHelper {
         return true;
     }
 
+    //Method to fetch DB Data
     public List<RaceModel> fetchRecords() {
         List<RaceModel> list = new ArrayList<>();
         SQLiteDatabase database = this.getReadableDatabase();

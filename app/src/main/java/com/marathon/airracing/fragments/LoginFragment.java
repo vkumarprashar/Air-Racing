@@ -34,6 +34,7 @@ public class LoginFragment extends Fragment {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_login, container, false);
 
+        //set video view
         VideoView videoView = (VideoView) view.findViewById(R.id.video_view);
         String uriPath = "android.resource://" + getActivity().getPackageName() + "/" + R.raw.video;
         Log.d("URI PATH", "onCreate: {}"+ uriPath);
@@ -80,6 +81,7 @@ public class LoginFragment extends Fragment {
         return view;
     }
 
+    //Changing Side nav menu items
     private void changeMenuItem() {
         NavigationView navigationView = getActivity().findViewById(R.id.nav_view);
         Menu menu = navigationView.getMenu();

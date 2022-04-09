@@ -63,6 +63,7 @@ public class HomeFragment extends Fragment {
         return view;
     }
 
+    //Getting data from API
     private void getData(View view) {
         OkHttpClient okHttpClient = new OkHttpClient().newBuilder().build();
 
