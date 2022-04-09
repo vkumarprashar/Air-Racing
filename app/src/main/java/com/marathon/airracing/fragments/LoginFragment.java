@@ -2,6 +2,7 @@ package com.marathon.airracing.fragments;
 
 import android.content.Context;
 import android.content.SharedPreferences;
+import android.net.Uri;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
@@ -17,6 +18,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.VideoView;
 
 import com.google.android.material.navigation.NavigationView;
 import com.marathon.airracing.MainActivity;
@@ -24,11 +26,7 @@ import com.marathon.airracing.R;
 
 public class LoginFragment extends Fragment {
 
-    @Override
-    public void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-
-    }
+    VideoView videoView;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -36,6 +34,13 @@ public class LoginFragment extends Fragment {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_login, container, false);
 
+        VideoView videoView = (VideoView) view.findViewById(R.id.video_view);
+        String uriPath = "android.resource://" + getActivity().getPackageName() + "/" + R.raw.video;
+        Log.d("URI PATH", "onCreate: {}"+ uriPath);
+        Uri uri2 = Uri.parse(uriPath);
+        videoView.setVideoURI(uri2);
+        videoView.requestFocus();
+        videoView.start();
 
         Button btn = view.findViewById(R.id.loginBtn);
         btn.setOnClickListener(v -> {
