@@ -48,21 +48,24 @@ public class ReservedFragment extends Fragment {
         DBHelper dbHelper = new DBHelper(getContext());
         List<RaceModel> list = dbHelper.fetchRecords();
         Log.d("FETCH RECORD DB", "onCreateView: " + list.size());
-//        createUri(view);
+        createUri();
         return view;
     }
 
     //Saving screesnhot of the ticket
-//    private void createUri(View view) {
-//        view.setDrawingCacheEnabled(true);
-//        Bitmap bitmap = Bitmap.createBitmap(view.getDrawingCache());
-//        view.setDrawingCacheEnabled(false);
-//        ByteArrayOutputStream outputStream = new ByteArrayOutputStream();
-//        bitmap.compress(Bitmap.CompressFormat.JPEG, 100, outputStream);
-//        String imagePath = MediaStore.Images.Media.insertImage(getActivity().getContentResolver(), bitmap, UUID.randomUUID().toString(), ".jpg");
-//        if (imagePath!=null) {
-//            Snackbar.make(view, "Ticket saved into your gallery!", Snackbar.LENGTH_LONG)
-//                    .setAction("Action", null).show();
-//        }
-//    }
+    private void createUri() {
+
+        View mainView = getActivity().getWindow().getDecorView();
+        mainView.setDrawingCacheEnabled(true);
+        mainView.buildDrawingCache();
+        Bitmap bitmap = mainView.getDrawingCache();
+
+        ByteArrayOutputStream outputStream = new ByteArrayOutputStream();
+        bitmap.compress(Bitmap.CompressFormat.JPEG, 100, outputStream);
+        String imagePath = MediaStore.Images.Media.insertImage(getActivity().getContentResolver(), bitmap, UUID.randomUUID().toString(), ".jpg");
+        if (imagePath!=null) {
+            Snackbar.make(mainView, "Ticket saved into your gallery!", Snackbar.LENGTH_LONG)
+                    .setAction("Action", null).show();
+        }
+    }
 }
